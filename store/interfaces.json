@@ -9,5 +9,14 @@
 
   "footer-mobile":{
     "component":"Footer"
+  },
+
+  "Desk":{
+    "component":"MegaMenuDesk"
+  },
+
+  "Mobile":{
+    "component":"MegaMenuMob"
   }
+
 }

@@ -1,0 +1,176 @@
+.header {
+  background-color: #c0392b;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  color: whitesmoke;
+}
+
+.menucontainer {
+  position: absolute;
+  top: 60px;
+  padding: 10px;
+  background-color: #ffffff;
+  z-index: 2;
+  left: 0px;
+  width: 100%;
+}
+
+.menusubcontainer {
+  display: flex;
+}
+
+.subMenu {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 80%;
+  padding: 20px;
+}
+
+.first {
+  width: 250px;
+}
+
+.col :hover {
+  background-color: white;
+  color: red;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+.bg {
+  padding: 0 20px;
+}
+
+h4 {
+  cursor: pointer;
+}
+
+.drop:hover {
+  color: #c0392b;
+}
+
+.drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid gray;
+  margin: 0px 2% 10px 0%;
+  padding-bottom: 5px;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.drop:hover .first {
+  display: block;
+}
+
+.drop:hover .subMenu {
+  display: block;
+}
+
+@media screen and (max-width: 1026px) {
+  .headerm {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-evenly;
+    align-items: center;
+    color: whitesmoke;
+  }
+
+  .heading {
+    color: #b12120;
+    padding: 0px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  svg {
+    margin-right: 10px;
+    color: #424242;
+  }
+
+  .button {
+    font-size: 30px;
+    color: black;
+    cursor: pointer;
+    position: fixed;
+    top: 40px;
+    left: 20px;
+    z-index: 1;
+  }
+
+  .button2 {
+    font-size: 30px;
+    color: #424242;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    margin-bottom: 10px;
+  }
+
+  .back {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: #424242;
+    cursor: pointer;
+  }
+
+  .navContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+  }
+
+  .subMenu {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5px 40px;
+    gap: 15px;
+    border-bottom: 0px;
+  }
+
+  .menucontainer {
+    position: relative;
+    top: 0px;
+    padding: 0px;
+  }
+
+  .menusubcontainer {
+    width: 100%;
+  }
+
+  .first {
+    width: 100%;
+  }
+
+  .drop {
+    border-bottom: 0px;
+    margin: 10px 0px;
+  }
+
+  .drop a {
+    margin-left: 20px;
+    border-bottom: 0px;
+  }
+}

@@ -88,7 +88,7 @@ const handleClose = (index: number) => {
 
 Footer.schema = {
   title: "Footer Mobile",
-  description: "Megamenu Component",
+  description: "Footer Mobile",
   type: "object",
   properties: {
     footerMenu: {

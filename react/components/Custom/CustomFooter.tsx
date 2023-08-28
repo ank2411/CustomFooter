@@ -74,8 +74,8 @@ useEffect(() => {setMenu(footerMenu)}, [footerMenu])
 
 
 CustomFooter.schema = {
-    title: 'editor.CustomFooter.title',
-    description: 'editor.CustomFooter.description',
+    title: 'Footer Desktop',
+    description: 'Footer Desktop',
     type: 'object',
     properties: {
     footerMenu: {
