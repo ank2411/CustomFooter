@@ -12,7 +12,7 @@ const ContactUs = () => {
     variables: {
       acronym: "AF",
       fields: ["firstName", "lastName", "age", "subject"],
-      schema: "conForm",
+      schema: "conForm", 
       page:pageNo,
       pageSize: 10,
     },
