@@ -1,0 +1,55 @@
+.table {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.box {
+  margin-bottom: 100px;
+}
+
+/* Style the table header */
+th {
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #dddddd;
+}
+
+/* Style the table rows */
+tr {
+  background-color: #f2f2f2;
+}
+
+/* Style the table data cells */
+td {
+  padding: 8px;
+}
+
+/* Add a border to the table rows and cells */
+tr,
+td {
+  border: 1px solid #dddddd;
+}
+
+.pgBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  color: white;
+  background-color: rgb(59, 59, 252);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px 20px;
+}

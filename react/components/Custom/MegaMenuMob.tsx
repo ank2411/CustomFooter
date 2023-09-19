@@ -19,6 +19,7 @@ const MegaMenuMob: StorefrontFunctionComponent = ({
   const [select, setSelect] = useState<any>();
   const [second, setSecond] = useState<any>();
   const [show, setShow] = useState(false);
+
   useEffect(() => {
     setMenu(megaMenu);
   }, [megaMenu]);
@@ -31,6 +32,16 @@ const MegaMenuMob: StorefrontFunctionComponent = ({
     }
   };
 
+  // const goBack = () => {
+  //   if (second != null || second !== "") {
+  //     setSecond(null);
+  //   } else if (select !== null || select !== "") {
+  //     setSelect(null);
+  //   } else {
+  //     setShow(false);
+  //   }
+  // };
+
   return (
     <div className={style.headerm}>
       <div
@@ -38,7 +49,7 @@ const MegaMenuMob: StorefrontFunctionComponent = ({
         style={{ display: show ? "none" : "block" }}
         onClick={() => setShow(!show)}
       >
-        &#9776;{" "}
+        &#9776;{""}
       </div>
 
       {show && (
@@ -47,9 +58,7 @@ const MegaMenuMob: StorefrontFunctionComponent = ({
             <div
               className={style.back}
               onClick={() => {
-                setShow(false);
-                setSelect("");
-                setSecond("");
+                goBack();
               }}
             >
               <svg
@@ -64,7 +73,6 @@ const MegaMenuMob: StorefrontFunctionComponent = ({
             <div
               className={style.button2}
               onClick={() => {
-                goBack();
                 setShow(false);
                 setSelect("");
                 setSecond("");
@@ -115,15 +123,20 @@ const MegaMenuMob: StorefrontFunctionComponent = ({
                           </ul>
                           {second !== item?.displayMenu && <hr />}
 
-                          {second == item?.displayMenu && item.secondLevelMenu && (
-                            <div className={style.subMenu}>
-                              {item.secondLevelMenu.map((subItem, subIndex) => (
-                                <div key={subIndex}>
-                                  <a href={subItem.href}>{subItem?.third}</a>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {second === item?.displayMenu &&
+                            item.secondLevelMenu && (
+                              <div className={style.subMenu}>
+                                {item.secondLevelMenu.map(
+                                  (subItem, subIndex) => (
+                                    <div key={subIndex}>
+                                      <a href={subItem.href}>
+                                        {subItem?.third}
+                                      </a>
+                                    </div>
+                                  )
+                                )}
+                              </div>
+                            )}
                         </>
                       ))}
                     </div>

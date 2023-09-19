@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import { useMutation } from "react-apollo";
 import uploadFile from "../Custom/graphql/uploadFile.graphql";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -10,6 +10,7 @@ const ContactUsForm = () => {
   const [upload] = useMutation(uploadFile);
   const captchaRef = useRef(null);
   const [save] = useMutation(createDocument);
+  const [token, setToken] = useState("");
   const [contact, setContact] = useState({
     Name: "",
     Email: "",
@@ -31,8 +32,8 @@ const ContactUsForm = () => {
     setContact({ ...contact, [name]: value });
   };
 
-  const handleFileChange = async (event: any) => {
-    const { files } = event.target;
+  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
+    const { files } = event.target as any;
     const { data } = await upload({
       variables: { file: files[0] },
     });
@@ -46,29 +47,40 @@ const ContactUsForm = () => {
     e.preventDefault();
     console.log(contact);
     const object: any = {
-      fields: Object.entries(contact).map(([key, value]) => ({ key, value })),
+      fields: Object.keys(contact).map((key: string) => ({ key, value: contact[key as keyof typeof contact] }))
     };
     try {
+      console.log(object, "-------");
+
       const data = await save({
         variables: {
           document: object,
           schema: "CONTACTUS",
           dataEntity: "CONTACTUS",
           account: "trika",
-          acronymn: "AA",
+          acronym: "AA",
         },
       });
-      if (data) {
+      console.log("!!!!!!!!!!", data);
+      if (data !== undefined) {
         setContact({
           Name: "",
           Email: "",
           Subject: "",
           Message: "",
-          UploadFile: "",
+          UploadFile: null,
         });
       }
+      console.log("]]]]]]]]]]]");
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleRecaptchaChange = (value: any) => {
+    if (value) {
+      console.log(value);
+      setToken(value);
     }
   };
 
@@ -87,6 +99,7 @@ const ContactUsForm = () => {
               <input
                 type="text"
                 name="Name"
+                value={contact.Name}
                 className={style.form}
                 onChange={handleChange}
               />
@@ -96,6 +109,7 @@ const ContactUsForm = () => {
               <input
                 type="email"
                 name="Email"
+                value={contact.Email}
                 className={style.form}
                 onChange={handleChange}
               />
@@ -105,6 +119,7 @@ const ContactUsForm = () => {
               <input
                 type="text"
                 name="Subject"
+                value={contact.Subject}
                 className={style.textarea}
                 onChange={handleChange}
               />
@@ -114,6 +129,7 @@ const ContactUsForm = () => {
               <input
                 type="text"
                 name="Message"
+                value={contact.Message}
                 className={style.textarea}
                 onChange={handleChange}
               />
@@ -130,13 +146,14 @@ const ContactUsForm = () => {
             <div>
               {
                 <ReCAPTCHA
-                  sitekey="6LeTcR0oAAAAAB5xaZpLwKKDjRfNKh62u2QgTOEx"
+                  onChange={handleRecaptchaChange}
+                  sitekey="6Ld_0B0oAAAAACRUfLEyh93h9G1RPN0k3bw6cCvs"
                   ref={captchaRef}
                 />
               }
             </div>
             <div className={style.submit}>
-              <button type="submit" value="submit">
+              <button type="submit" disabled={!token && !token.length}>
                 Submit
               </button>
               <button type="button" onClick={close}>

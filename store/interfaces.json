@@ -17,6 +17,13 @@
 
   "Mobile":{
     "component":"MegaMenuMob"
-  }
+  },
 
+  "contact":{
+    "component":"ContactUs"
+  },
+
+  "contactUs":{
+    "component":"ContactUsForm"
+  }
 }
