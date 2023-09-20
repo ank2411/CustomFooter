@@ -1,0 +1,6 @@
+query getAppSettings($version: String) {
+  publicSettingsForApp(app: "vtex.countdown", version: $version)
+    @context(provider: "vtex.apps-graphql") {
+    message
+  }
+}

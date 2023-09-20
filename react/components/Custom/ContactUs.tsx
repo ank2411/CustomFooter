@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./contactUsStyles.css";
-import { useQuery } from "react-apollo";
+import { useLazyQuery } from "react-apollo";
 // import documents from "./graphql/getContact.graphql";
 import documents from "./graphql/getContact.graphql";
 
@@ -8,11 +8,11 @@ const ContactUs = () => {
   const [contact, setContact] = useState<any>([]);
   const [pageNo, setPageNo] = useState(1);
   const [err, setErr] = useState<any>(null);
-  const {  data, error } = useQuery(documents, {
+  const [getContact, { data, error }] = useLazyQuery(documents, {
     variables: {
       acronym: "AF",
       fields: ["firstName", "lastName", "age", "subject"],
-      schema: "conForm", 
+      schema: "conForm",
       page:pageNo,
       pageSize: 10,
     },
@@ -21,6 +21,15 @@ const ContactUs = () => {
   });
 
   useEffect(() => {
+    getContact({
+      variables: {
+        acronym: "AF",
+        fields: ["firstName", "lastName", "age", "subject"],
+        schema: "conForm",
+        page:pageNo,
+        pageSize: 10,
+      },
+    });
     if (data) {
       setContact(data.documents);
       console.log("data", data);
@@ -29,7 +38,7 @@ const ContactUs = () => {
   }, [pageNo, data]);
 
   console.log(error);
-
+  console.log("data", data);
   return (
     <div className={style.box}>
       <table className={style.contactContainer}>

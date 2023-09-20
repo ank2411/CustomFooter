@@ -1,16 +1,16 @@
-import React, { ChangeEvent, useRef, useState } from "react";
-import { useMutation } from "react-apollo";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { useMutation, useQuery } from "react-apollo";
 import uploadFile from "../Custom/graphql/uploadFile.graphql";
 import ReCAPTCHA from "react-google-recaptcha";
 import createDocument from "../Custom/graphql/postContact.graphql";
 import style from "./contactUsFormStyles.css";
-
+import getAppSettings from "../Custom/graphql/getCaptcha.graphql";
 const ContactUsForm = () => {
   const [show, setShow] = useState(false);
   const [upload] = useMutation(uploadFile);
-  const captchaRef = useRef(null);
   const [save] = useMutation(createDocument);
   const [token, setToken] = useState("");
+  const [recap, setrecap] = useState<any>();
   const [contact, setContact] = useState({
     Name: "",
     Email: "",
@@ -47,7 +47,10 @@ const ContactUsForm = () => {
     e.preventDefault();
     console.log(contact);
     const object: any = {
-      fields: Object.keys(contact).map((key: string) => ({ key, value: contact[key as keyof typeof contact] }))
+      fields: Object.keys(contact).map((key: string) => ({
+        key,
+        value: contact[key as keyof typeof contact],
+      })),
     };
     try {
       console.log(object, "-------");
@@ -83,7 +86,21 @@ const ContactUsForm = () => {
       setToken(value);
     }
   };
+  const { data: appSettingsData } = useQuery(getAppSettings, {
+    variables: {
+      version: process.env.VTEX_APP_VERSION,
+    },
+    ssr: false,
+  });
 
+  useEffect(() => {
+    const settings =
+      appSettingsData &&
+      JSON.parse(appSettingsData?.publicSettingsForApp?.message || "");
+
+    setrecap(settings?.recaptchaKey);
+    console.log("first", settings?.recaptchaKey, appSettingsData, recap);
+  }, [appSettingsData]);
   return (
     <div className={style.contact}>
       {!show && (
@@ -144,13 +161,10 @@ const ContactUsForm = () => {
               />
             </div>
             <div>
-              {
-                <ReCAPTCHA
-                  onChange={handleRecaptchaChange}
-                  sitekey="6Ld_0B0oAAAAACRUfLEyh93h9G1RPN0k3bw6cCvs"
-                  ref={captchaRef}
-                />
-              }
+              <ReCAPTCHA
+                onChange={handleRecaptchaChange}
+                sitekey={recap}
+              />
             </div>
             <div className={style.submit}>
               <button type="submit" disabled={!token && !token.length}>

@@ -25,5 +25,9 @@
 
   "contactUs":{
     "component":"ContactUsForm"
+  },
+  
+  "contactService":{
+    "component":"ContactService"
   }
 }

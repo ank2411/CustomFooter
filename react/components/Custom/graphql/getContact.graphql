@@ -9,7 +9,7 @@ query getDocuments(
     fields: $fields
     page: $page
     pageSize: $pageSize
-  ) @context(provider: "vtex.store-graphql") {
+  ) {
     fields {
       key
       value

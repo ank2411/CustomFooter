@@ -11,13 +11,13 @@
     "react": "3.x"
   },
   "settingsSchema": {
-    "title": "Surya",
+    "title": "Ankit",
     "type": "object",
     "access": "public",
     "properties": {
       "recaptchaKey": {
         "title": "captcha",
-        "description": "Enter the recapthhakey for  token from user & rules",
+        "description": "Enter the recaptcha key for token from user & rules",
         "type": "string"
       }
     }
@@ -26,7 +26,8 @@
     "vtex.styleguide": "9.x",
     "vtex.css-handles": "0.x",
     "vtex.store-graphql": "2.x",
-    "vtex.file-manager-graphql": "0.x"
+    "vtex.file-manager-graphql": "0.x",
+    "vtex.apps-graphql": "3.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
