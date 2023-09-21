@@ -16,7 +16,7 @@ const ContactService = () => {
       );
 
       if (response.status === 200) {
-        console.log(contactData, "Data fetched successfully",response.data);
+        console.log(contactData, "Data fetched successfully", response.data);
         return setContactData(response.data);
       } else {
         setErr("Failed to receive contact details due to some error");
@@ -41,10 +41,10 @@ const ContactService = () => {
           </tr>
         </thead>
         <tbody>
-          { contactData.length ? (
+          {contactData.length ? (
             contactData.map((item: any, index: any) => (
               <tr key={index}>
-                <td>{index+1}</td>
+                <td>{index + 1}</td>
                 <td>{item.firstname}</td>
                 <td>{item.lastname}</td>
                 <td>{item.age}</td>
