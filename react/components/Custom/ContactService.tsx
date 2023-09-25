@@ -32,10 +32,10 @@ const ContactService = () => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Age</th>
+            <th>Name</th>
+            <th>Email</th>
             <th>Subject</th>
+            <th>Message</th>
           </tr>
         </thead>
         <tbody>
@@ -43,10 +43,10 @@ const ContactService = () => {
             contactData.map((item: any, index: any) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{item.firstname}</td>
-                <td>{item.lastname}</td>
-                <td>{item.age}</td>
-                <td>{item.subject}</td>
+                <td>{item.Name}</td>
+                <td>{item.Email}</td>
+                <td>{item.Subject}</td>
+                <td>{item.Message}</td>
               </tr>
             ))
           ) : (
