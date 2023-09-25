@@ -15,7 +15,6 @@ table {
   margin-bottom: 100px;
 }
 
-/* Style the table header */
 th {
   background-color: #f2f2f2;
   text-align: center;
@@ -23,17 +22,14 @@ th {
   border: 1px solid #dddddd;
 }
 
-/* Style the table rows */
 tr {
   background-color: #f2f2f2;
 }
 
-/* Style the table data cells */
 td {
   padding: 8px;
 }
 
-/* Add a border to the table rows and cells */
 tr,
 td {
   border: 1px solid #dddddd;
