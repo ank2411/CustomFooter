@@ -1,35 +1,33 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios"; // Import Axios
+// import axios from "axios"; // Import Axios
 
 const ContactService = () => {
   const [contactData, setContactData] = useState([]);
-  const [, setErr] = useState("");
 
   useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(
+          "https://testinfo--trika.myvtex.com/testdata"
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setContactData(data);
+        } else {
+          throw new Error("Error fetching data");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        // setContactData(null);
+      }
+    };
     fetchUserData();
   }, []);
 
-  const fetchUserData = async () => {
-    try {
-      const response = await axios.get(
-        "https://testinfo--trika.myvtex.com/testdata"
-      );
-
-      if (response.status === 200) {
-        console.log(contactData, "Data fetched successfully", response.data);
-        return setContactData(response.data);
-      } else {
-        setErr("Failed to receive contact details due to some error");
-        console.log("Failed to receive contact details due to some error");
-      }
-    } catch (err) {
-      setErr("Failed to receive contact details due to a network error");
-      console.error(err);
-    }
-  };
-
   return (
     <div>
+      <h2>Contact Details using Endpoint</h2>
       <table>
         <thead>
           <tr>

@@ -13,7 +13,7 @@ const ContactUs = () => {
       acronym: "AF",
       fields: ["firstName", "lastName", "age", "subject"],
       schema: "conForm",
-      page:pageNo,
+      page: pageNo,
       pageSize: 10,
     },
     notifyOnNetworkStatusChange: true,
@@ -26,7 +26,7 @@ const ContactUs = () => {
         acronym: "AF",
         fields: ["firstName", "lastName", "age", "subject"],
         schema: "conForm",
-        page:pageNo,
+        page: pageNo,
         pageSize: 10,
       },
     });
@@ -38,7 +38,7 @@ const ContactUs = () => {
   }, [pageNo, data]);
 
   console.log(error);
-  console.log("data", data);
+
   return (
     <div className={style.box}>
       <table className={style.contactContainer}>

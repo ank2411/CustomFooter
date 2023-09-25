@@ -29,18 +29,10 @@ const MegaMenuMob: StorefrontFunctionComponent = ({
       setSecond(null);
     } else if (select != null) {
       setSelect(null);
+    } else {
+      setShow(false);
     }
   };
-
-  // const goBack = () => {
-  //   if (second != null || second !== "") {
-  //     setSecond(null);
-  //   } else if (select !== null || select !== "") {
-  //     setSelect(null);
-  //   } else {
-  //     setShow(false);
-  //   }
-  // };
 
   return (
     <div className={style.headerm}>
@@ -86,7 +78,7 @@ const MegaMenuMob: StorefrontFunctionComponent = ({
               <div className={style.heading}>
                 <h4 key={index} onClick={() => setSelect(user.heading)}>
                   {user.heading}
-                </h4>{" "}
+                </h4>
                 {select !== user.heading && (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
