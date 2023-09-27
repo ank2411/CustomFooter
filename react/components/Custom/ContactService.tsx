@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import style from "./contactServiceStyles.css"
 
 const ContactService = () => {
   const [contactData, setContactData] = useState([]);
@@ -26,7 +27,7 @@ const ContactService = () => {
   };
 
   return (
-    <div>
+    <div className={style.boxContainer}>
       <h2>Contact Details using Endpoint</h2>
       <table>
         <thead>

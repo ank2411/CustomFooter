@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./contactUsStyles.css";
 import { useLazyQuery } from "react-apollo";
-// import documents from "./graphql/getContact.graphql";
 import documents from "./graphql/getContact.graphql";
 
 const ContactUs = () => {
@@ -41,6 +40,7 @@ const ContactUs = () => {
 
   return (
     <div className={style.box}>
+      <h2>Contact Data</h2>
       <table className={style.contactContainer}>
         <thead>
           <tr>

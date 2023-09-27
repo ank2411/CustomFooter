@@ -1,3 +1,11 @@
+.table {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -14,3 +22,16 @@ th {
   tr {
     background-color: #f2f2f2;
   }
+
+  td {
+    padding: 8px;
+  }
+  
+  tr,
+  td {
+    border: 1px solid #dddddd;
+  }
+
+.boxContainer{
+  margin-bottom: 100px;
+}

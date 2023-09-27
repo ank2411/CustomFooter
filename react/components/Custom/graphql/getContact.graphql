@@ -11,8 +11,8 @@ query getDocuments(
     pageSize: $pageSize
   ) {
     fields {
-      key
       value
+      key
     }
   }
 }
