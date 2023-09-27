@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
-// import axios from "axios"; // Import Axios
 
 const ContactService = () => {
   const [contactData, setContactData] = useState([]);
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(
-          "https://testinfo--trika.myvtex.com/testdata"
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-          setContactData(data);
-        } else {
-          throw new Error("Error fetching data");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        // setContactData(null);
-      }
-    };
     fetchUserData();
   }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch("/testdata");
+      console.log(response.ok, "+++++++++++");
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data, "-----------");
+
+        setContactData(data);
+      } else {
+        throw new Error("Error fetching data");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <div>
