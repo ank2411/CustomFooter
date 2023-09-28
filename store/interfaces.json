@@ -1,5 +1,33 @@
 {
   "countdown": {
     "component": "Countdown"
+  },
+
+  "footer-new":{
+    "component": "CustomFooter"
+  },
+
+  "footer-mobile":{
+    "component":"Footer"
+  },
+
+  "Desk":{
+    "component":"MegaMenuDesk"
+  },
+
+  "Mobile":{
+    "component":"MegaMenuMob"
+  },
+
+  "contact":{
+    "component":"ContactUs"
+  },
+
+  "contactUs":{
+    "component":"ContactUsForm"
+  },
+  
+  "contactService":{
+    "component":"ContactService"
   }
 }
